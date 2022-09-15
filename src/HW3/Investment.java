@@ -42,7 +42,7 @@ public class Investment {
         double intRate ;
         if (kbd.hasNextDouble()) {
             intRate = kbd.nextDouble();
-            if (intRate % 1 == 0) {
+            if (!(0 < intRate && intRate < 1)) {
                 System.out.printf("Error: should be decimal, you entered " + intRate);
                 return; // exit main
             }
