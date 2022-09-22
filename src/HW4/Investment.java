@@ -4,12 +4,15 @@ package HW4;
  * 9/15/22
  *HW2
  */
+
 import java.util.Scanner;
+
 public class Investment {
     public static double investment(double c, double r, int t, int n) {
         return c * Math.pow(1 + r / n, t * n);
     }
-    public static int getDep (Scanner s) {
+
+    public static int getDep(Scanner s) {
         boolean valid = false;
         int dep = 0;
         while (!valid) {
@@ -28,8 +31,9 @@ public class Investment {
         }
         return dep;
     }
+
     // ----------------------------------------------------------------------------------------
-    public static double getintRate (Scanner s) {
+    public static double getintRate(Scanner s) {
         boolean valid = false;
         double intRate = 0;
         while (!valid) {
@@ -48,28 +52,30 @@ public class Investment {
         }
         return intRate;
     }
-// --------------------------------------------------------------------------------------
-public static int getYears (Scanner s) {
-    boolean valid = false;
-    int years = 0;
-    while (!valid) {
-        System.out.print("Enter number of years: ");
-        if (s.hasNextInt()) {
-            years = s.nextInt();
-            if (years < 0) {
-                System.out.printf("Error: years cannot be negative. You entered \"%s\n", years);
-            } else {
-                valid = true;
-            }
-        } else {
-            System.out.printf("Error: please enter an integer number, you entered \"%s\"\n", s.next());
-        }
 
+    // --------------------------------------------------------------------------------------
+    public static int getYears(Scanner s) {
+        boolean valid = false;
+        int years = 0;
+        while (!valid) {
+            System.out.print("Enter number of years: ");
+            if (s.hasNextInt()) {
+                years = s.nextInt();
+                if (years < 0) {
+                    System.out.printf("Error: years cannot be negative. You entered \"%s\n", years);
+                } else {
+                    valid = true;
+                }
+            } else {
+                System.out.printf("Error: please enter an integer number, you entered \"%s\"\n", s.next());
+            }
+
+        }
+        return years;
     }
-    return years;
-}
+
     // ----------------------------------------------------------------------------------------
-    public static int getCompound (Scanner s) {
+    public static int getCompound(Scanner s) {
         boolean valid = false;
         int compound = 0;
         while (!valid) {
@@ -88,17 +94,17 @@ public static int getYears (Scanner s) {
         }
         return compound;
     }
+
     public static void main(String[] args) {
         Scanner kbd = new Scanner(System.in);
-    int dep = getDep(kbd);
-    double intRate = getintRate(kbd);
-    int years = getYears(kbd);
-    int compound = getCompound(kbd);
-
+        int dep = getDep(kbd);
+        double intRate = getintRate(kbd);
+        int years = getYears(kbd);
+        int compound = getCompound(kbd);
 
 
         System.out.printf("Your investment is worth %.2f dollars", Investment.investment(dep, intRate, years, compound));
 
     } // main closing bracket
 
-    } // class closing bracket
+} // class closing bracket
