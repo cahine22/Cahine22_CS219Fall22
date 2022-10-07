@@ -3,7 +3,6 @@ package HW5;
 public class exercise66 {
 
     public static boolean canSpell(String word, String tiles) {
-        boolean CantSpell = false;
         for (int i = 0; i < tiles.length(); i++) {
             char tiles_letter = tiles.charAt(i);
             for (int j = 0; j < word.length(); j++) {
@@ -17,7 +16,7 @@ public class exercise66 {
         if(word.length() == 0){
                 return true;}
 
-        return CantSpell;
+        return false;
 
     }
 
