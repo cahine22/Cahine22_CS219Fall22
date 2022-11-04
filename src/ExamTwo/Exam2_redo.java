@@ -3,9 +3,10 @@ package ExamTwo;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class Exam {
+public class Exam2_redo {
     public static boolean isPalindrome2(String s) {
         if(s.length() < 2)
             return true;
@@ -14,46 +15,47 @@ public class Exam {
             return true;
         else
             return false;}
-    public static String [] loadWords(String path, int n) {
-        // connect to the webpage of speeds
-        URL url = null; // the "nothing value"
+
+
+    public static String [] load_words(String path, int n) {
+        // connect to the web page of speeds
+        URL url = null;    // null is the "nothing value"
         Scanner s = null;
+
         try {
-            url = new URL(path); // create a URL object for the
+            url = new URL(path); // create a URL object for the path
             s = new Scanner(url.openConnection().getInputStream());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
         // create an array of strings
         String [] words = new String[n];
         int i = 0;
         while (s.hasNextLine()) {
-            if(isPalindrome2(words[i]))
-                words[i++] = s.nextLine();
+            String newWord = s.nextLine();
+            if (isPalindrome2(newWord))
+                words[i++] = newWord;
+        }
 
-
-            }
         return words;
-
     }
-    public static int [] reverse(int [] arr) {
-        for (int i = 0; i < arr.length/2; i++) {
-            int temp = arr[i];
+    public static void reverse(String [] arr) {
+        for (int i = 0; i < arr.length / 2; i++) {
+            String temp = arr[i];
             arr[i] = arr[arr.length - 1 - i];
             arr[arr.length - 1 - i] = temp;
         }
-        return arr;}
-
-
+    }
 
     public static void main(String[] args) {
-        String[] words = loadWords("http://10.60.15.25/~ehar/cs219/wordle-nyt-solutions.txt", 2309);
-        //words = reverse(words);
+        String [] words = load_words("http://10.60.15.25/~ehar/cs219/wordle-nyt-solutions.txt", 9);
+        reverse(words);
 
-
-        System.out.println(words);
-
+        System.out.println(Arrays.toString(words));
+    }
 
 
     }
-}

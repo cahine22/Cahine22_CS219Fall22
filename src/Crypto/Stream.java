@@ -28,7 +28,7 @@ public class Stream {
             int shift = rng.nextInt(100);
             if (!encrypt)
                 shift = -shift;
-            int cipher_char_pos = Math.floorMod(clear_char_pos + rng.nextInt(100), alpha_length);
+            int cipher_char_pos = Math.floorMod(clear_char_pos + shift, alpha_length);
             char cipher_char = (char) (cipher_char_pos + base_char);
             cipher += cipher_char;
         }
