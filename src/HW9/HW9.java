@@ -11,7 +11,10 @@ public class HW9 {
         as a guide.
      */
     public static BigInteger bigpow(BigInteger x, int y) {
-        return BigInteger.ZERO;  // shut up error message
+        BigInteger prod = BigInteger.ONE;
+        for(int i = 0; i < y; i++)
+            prod = prod.multiply(x);
+        return prod;
     }
 
     /*
@@ -20,7 +23,16 @@ public class HW9 {
         built in pow function.
      */
     public static BigInteger fastbigpow(BigInteger x, int y) {
-        return BigInteger.ZERO;  // shut up error message
+        BigInteger base = BigInteger.ONE;
+        if (y == 0){
+            return base;
+        }
+        else if (y % 2 == 0){
+            return (fastbigpow(x,y/2).multiply(fastbigpow(x,y/2)));
+        }
+        else {
+            return (fastbigpow(x,y-1).multiply(x));
+        }
     }
 
     public static void main(String[] args) {
