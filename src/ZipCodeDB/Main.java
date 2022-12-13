@@ -8,7 +8,15 @@ public class Main {
         Zipcode z2 = new Zipcode("21158", "MA", "Uniontown", 77.04, 39.66, 84910);
         System.out.println(z2);
 
-//        Database db = new Database();
+        Database db = new Database();
+        WeatherObservation wob = db.search("13617").getWeatherData();
+
+        System.out.println(wob);
+
+        return;
+
+
+
 
     }
     }
